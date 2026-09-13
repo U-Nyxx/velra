@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
@@ -30,4 +31,17 @@ android {
 
 dependencies {
     // no third-party — pure framework
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "io.github.u-nyxx"
+                artifactId = "velra"
+                version = "0.1.0"
+            }
+        }
+    }
 }

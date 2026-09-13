@@ -43,13 +43,13 @@ dependencies {
 
 afterEvaluate {
     publishing {
-        publications {
-            create<MavenPublication>("release") {
-                from(components["release"])
-                groupId = "io.github.u-nyxx"
-                artifactId = "velra"
-                version = "0.1.0"
-            }
+    publications {
+        create<MavenPublication>("release") {
+            from(components["release"])
+            groupId = "io.github.u-nyxx"
+            artifactId = "velra"
+            version = "0.1.1"
         }
+    }
     }
 }

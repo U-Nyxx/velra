@@ -7,10 +7,18 @@ plugins {
 android {
     namespace = "io.github.u_nyxx.velra"
     compileSdk = 34
+    ndkVersion = "27.0.12077973"
 
     defaultConfig {
         minSdk = 33
         consumerProguardFiles("consumer-rules.pro")
+    }
+
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+            version = "3.22.1"
+        }
     }
 
     compileOptions {

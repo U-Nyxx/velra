@@ -3,6 +3,7 @@
   <img src="https://img.shields.io/maven-central/v/io.github.u-nyxx/velra?color=0A0A0A&label=Maven" alt="Maven">
   <img src="https://jitpack.io/v/U-Nyxx/velra.svg" alt="JitPack">
   <img src="https://img.shields.io/badge/Kotlin-2.0.21-7F52FF?style=flat&logo=kotlin" alt="Kotlin">
+  <img src="https://img.shields.io/badge/C++-NDK%2027-00599C?style=flat&logo=cplusplus" alt="C++">
   <img src="https://img.shields.io/badge/AGSL-RuntimeShader-111111?style=flat" alt="AGSL">
   <img src="https://img.shields.io/badge/API-33%2B-111111?style=flat" alt="API">
 </p>
@@ -11,12 +12,12 @@
 
 <p align="center">
   <b>Liquid Glass Engine for Android</b><br>
-  <sub>AGSL RuntimeShader + RenderEffect • SDF lens • 3-tap CA • Spring physics • SOC-adaptive</sub>
+  <sub>AGSL RuntimeShader + RenderEffect + C++ NDK • SDF lens • 3-tap CA • Spring physics • SOC-adaptive</sub>
 </p>
 
 ---
 
-> Extracted from [Klynt](https://github.com/U-Nyxx/Klynt) — the LSPosed Liquid Glass pill. Velra is the pure engine: zero third-party, `arm64` + `Mali` safe, `ThermalListener` aware. No bitmap capture, no `.so`, no HWUI kill-switch.
+> Extracted from [Klynt](https://github.com/U-Nyxx/Klynt) — the LSPosed Liquid Glass pill. Velra is the pure engine: zero third-party, `arm64` + `Mali` safe, `ThermalListener` aware. No bitmap capture, `libvelra.so` via NDK (`velra.cpp` hardware↔software bridge), no HWUI kill-switch. Not full Kotlin: Kotlin + AGSL + C++.
 
 ## Install
 
@@ -74,10 +75,14 @@ val view = VelraGlassView(context).apply {
 
 Loop-free AGSL (`for/while` banned — Mali strict). Blur from `RenderEffect` chain, not shader. `selectGlassTier(frosted, lowRam, thermal, highQuality)` pure.
 
+## Low-Level Bridge (hardware↔software)
+
+Velra is not full Kotlin — research: reference platform glass is `Render Server (C++14)` + `Metal Shading Language`; we map to `AGSL (GPU) + RenderEffect + C++ NDK (CPU)`. Native `velra.cpp` reads `ro.hardware` via `__system_property_get` (bypasses Java cache) and `sysconf` for low-RAM, exposing `nativeHardware()` / `nativeIsLowRam()` via JNI. Build: `CMake 3.22.1` + `NDK 27.0.12077973` → `libvelra.so` (`arm64-v8a` only, diet).
+
 ## Requirements
 
-- `minSdk 33` (`RuntimeShader` Tiramisu+), `compileSdk 34`, `Kotlin 2.0.21`, `JDK 17`
-- `android.graphics.RuntimeShader` + `RenderEffect` (`API 33/31`)
+- `minSdk 33` (`RuntimeShader` Tiramisu+), `compileSdk 34`, `Kotlin 2.0.21`, `JDK 17`, `NDK 27` + `CMake 3.22.1`
+- `android.graphics.RuntimeShader` + `RenderEffect` (`API 33/31`) + `libvelra.so`
 
 ## License
 

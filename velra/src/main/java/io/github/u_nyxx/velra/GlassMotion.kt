@@ -3,7 +3,7 @@ package io.github.u_nyxx.velra
 /**
  * iOS-spring equivalent for the View-system glass (hook overlay).
  *
- * Apple drives lens pops with `CASpringAnimation`; the Android twin
+ * Platform drives lens pops with `CASpringAnimation`; the Android twin
  * inside a hooked process is a hand-rolled damped spring over
  * `Choreographer` — zero dependencies (no dynamicanimation AAR, APK
  * stays lean) and pure functions so the integrator is unit-testable

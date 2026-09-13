@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.22.1)
+project("velra")
+add_library(velra SHARED velra.cpp)
+find_library(log-lib log)
+target_link_libraries(velra ${log-lib} android)

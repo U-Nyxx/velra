@@ -1,0 +1,22 @@
+# Linguist: Kotlin + C++ + AGSL
+*.kt linguist-language=Kotlin
+*.kts linguist-language=Kotlin
+*.cpp linguist-language=C++
+*.h linguist-language=C++
+*.c linguist-language=C
+*.agsl linguist-language=GLSL
+*.xml linguist-language=XML
+*.gradle linguist-language=Gradle
+*.py linguist-language=Python
+*.sh linguist-language=Shell
+
+# Generated
+build/** linguist-generated=true
+.velra/** linguist-generated=true
+*.aar linguist-generated=true
+*.so linguist-generated=true
+*.apk linguist-generated=true
+
+# Docs
+*.md linguist-documentation=true
+LICENSE linguist-documentation=true

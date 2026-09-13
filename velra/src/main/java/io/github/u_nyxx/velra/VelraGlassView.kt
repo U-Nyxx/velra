@@ -36,14 +36,22 @@ import java.util.concurrent.Executor
  * SCRIM at MODERATE+ and restores the previous tier when the skin
  * cools. Listener is bound to the window (attach/detach), never leaked.
  *
- * Motion (Apple rule): the element materializes by springing lens
+ * Motion (Platform rule): the element materializes by springing lens
  * bending 0→target via [GlassMotion], never by opacity crossfade.
  */
-class KlyntGlassView @JvmOverloads constructor(
+class VelraGlassView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
+
+    external fun nativeIsLowRam(): Boolean
+
+    companion object {
+        init {
+            try { System.loadLibrary("velra") } catch (_: Throwable) {}
+        }
+    }
 
     private val barRect = RectF()
     private var shader: RuntimeShader? = null
@@ -87,7 +95,7 @@ class KlyntGlassView @JvmOverloads constructor(
             rebuildEffect()
         }
 
-    /** Apple's Clear variant: max transparency, full refraction. */
+    /** Platform's Clear variant: max transparency, full refraction. */
     var clearMode: Boolean = false
         set(value) {
             field = value
@@ -144,7 +152,7 @@ class KlyntGlassView @JvmOverloads constructor(
     fun clearPress() = setPress(-1f, -1f, 0f)
 
     /**
-     * Materialize transition (Apple rule): springs lens bending
+     * Materialize transition (Platform rule): springs lens bending
      * 0→target with one soft overshoot. Call right after attach.
      */
     fun animateIntensityTo(target: Float) {
@@ -356,7 +364,7 @@ fun glassParamsFor(profile: io.github.u_nyxx.velra.SocDetector.Profile): GlassPa
  * One-call SOC setup: blur + CA + bevel + tier from [profile].
  * Honors [blurEnabled] (manager per-app toggle → SCRIM, keeps bounds).
  */
-fun KlyntGlassView.configure(
+fun VelraGlassView.configure(
     profile: io.github.u_nyxx.velra.SocDetector.Profile,
     intensity: Float,
     blurEnabled: Boolean

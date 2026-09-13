@@ -1,0 +1,3 @@
+-keep class io.github.u_nyxx.velra.** { *; }
+-dontwarn android.graphics.RuntimeShader
+-dontwarn android.graphics.RenderEffect

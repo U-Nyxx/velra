@@ -1,0 +1,6 @@
+jdk:
+  - openjdk17
+before_install:
+  - echo "Velra — io.github.u-nyxx:velra — via JitPack"
+install:
+  - ./gradlew :velra:publishToMavenLocal

@@ -18,11 +18,11 @@ No bitmap capture. `libvelra.so` via NDK. Loop-free AGSL for Mali.
 
 ```kotlin
 // Maven Central
-implementation("io.github.u-nyxx:velra:0.1.1")
+implementation("io.github.u-nyxx:velra:0.1.2")
 
 // JitPack
 maven("https://jitpack.io")
-implementation("com.github.U-Nyxx:velra:0.1.1")
+implementation("com.github.U-Nyxx:velra:0.1.2")
 ```
 
 ### Use
@@ -78,7 +78,7 @@ class VelraGlassView { external fun nativeIsLowRam(): Boolean } // sysconf
 
 ```bash
 ./gradlew :velra:assembleRelease   # 22K aar
-./gradlew :velra:publishToMavenLocal  # ~/.m2/io/github/u-nyxx/velra/0.1.1/
+./gradlew :velra:publishToMavenLocal  # ~/.m2/io/github/u-nyxx/velra/0.1.2/
 ```
 
 `minSdk 33` (RuntimeShader), `compileSdk 34`, `JDK 17`, `NDK 27`, `CMake 3.22`

@@ -3,4 +3,7 @@ jdk:
 before_install:
   - echo "Velra — io.github.u-nyxx:velra — via JitPack"
 install:
-  - ./gradlew :velra:publishToMavenLocal
+  - ./gradlew :velra:assembleRelease
+  - ./gradlew :velra:testDebugUnitTest
+before_cache:
+  - rm -rf ~/.gradle/caches/modules-2/files-2.1

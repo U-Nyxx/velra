@@ -5,7 +5,7 @@ pluginManagement {
         gradlePluginPortal()
     }
     plugins {
-        alias(libs.plugins.android.library) apply false
+        alias(libs.plugins.android.application) apply false
         alias(libs.plugins.kotlin.android) apply false
     }
 }
@@ -14,10 +14,9 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
-        maven("https://maven.aliyun.com/repository/public/")
         mavenCentral()
     }
 }
 
-rootProject.name = "velra"
-include(":velra")
+rootProject.name = "VelraSample"
+include(":app")

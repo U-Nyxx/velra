@@ -1,0 +1,10 @@
+* @U-Nyxx
+
+.github/workflows/build.yml @U-Nyxx
+velra/src/main/java/io/github/u_nyxx/velra/ @U-Nyxx
+velra/src/main/cpp/ @U-Nyxx
+docs/ @U-Nyxx
+CHANGELOG.md @U-Nyxx
+CONTRIBUTING.md @U-Nyxx
+SECURITY.md @U-Nyxx
+sample/ @U-Nyxx

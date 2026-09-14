@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.VelraSample" parent="androidx.compose.material3.Material3Theme">
+        <item name="colorPrimary">#D7C6FF</item>
+        <item name="colorOnPrimary">#0A0A0A</item>
+    </style>
+</resources>

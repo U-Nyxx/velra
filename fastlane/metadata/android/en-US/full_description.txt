@@ -1,0 +1,20 @@
+Full name: Velra
+Short description: Liquid Glass engine for Android
+Full description: |
+  Velra is a standalone glass rendering engine for Android.
+  
+  It powers KLYNT but can be used as a library.
+  
+  ## Features
+  - AGSL + C++ NDK rendering
+  - Per-SoC adaptive quality
+  - Spring physics via Choreographer
+  - No bitmap capture
+  
+  ## Install
+  maven("io.github.u-nyxx:velra:0.1.2")
+  
+  ## Usage
+  VelraGlassView(context).apply {
+      configure(SocDetector.resolve(context), intensity = 1f)
+  }

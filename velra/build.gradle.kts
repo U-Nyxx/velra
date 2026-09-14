@@ -1,13 +1,13 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.maven.publish)
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
     namespace = "io.github.u_nyxx.velra"
     compileSdk = 34
-    ndkVersion = libs.versions.ndk.get()
+    ndkVersion = "27.0.12077973"
 
     defaultConfig {
         minSdk = 33
@@ -17,7 +17,7 @@ android {
     externalNativeBuild {
         cmake {
             path = file("src/main/cpp/CMakeLists.txt")
-            version = libs.versions.cmake.get()
+            version = "3.22.1"
         }
     }
 

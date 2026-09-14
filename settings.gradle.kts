@@ -1,12 +1,9 @@
 pluginManagement {
     repositories {
         google()
+        maven("https://maven.aliyun.com/repository/public/")
         mavenCentral()
         gradlePluginPortal()
-    }
-    plugins {
-        alias(libs.plugins.android.library) apply false
-        alias(libs.plugins.kotlin.android) apply false
     }
 }
 
